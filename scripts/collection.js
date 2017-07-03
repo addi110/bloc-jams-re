@@ -20,9 +20,9 @@ window.onload = function () {
 
     var collectionContainer = document.getElementsByClassName('album-covers')[0];
 
-    collectionContainer.innerHtml = '';
+    collectionContainer.innerHTML = '';
 
-    for (var i =0; i < 6; i==){
-        collectionContainer.innerHtml += collectionItemTemplate;
+    for (var i =0; i < 6; i++){
+        collectionContainer.innerHTML += collectionItemTemplate;
     }
 }
