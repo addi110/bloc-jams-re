@@ -1,5 +1,6 @@
 var collectionItemTemplate =
-    '<div class="collection-album-container column fourth">'
+     'This text will not be parse as HTML'
++    '<div class="collection-album-container column fourth">'
 + '     <img src="assets/images/album_covers/01.png"/>'
 + '     <div class="collection-album-info caption">'
 + '          <p>'
@@ -20,9 +21,9 @@ window.onload = function () {
 
     var collectionContainer = document.getElementsByClassName('album-covers')[0];
 
-    collectionContainer.innerHTML = '';
+    collectionContainer.textContent= '';
 
     for (var i =0; i < 6; i++){
-        collectionContainer.innerHTML += collectionItemTemplate;
+        collectionContainer.textContent += collectionItemTemplate;
     }
 }
