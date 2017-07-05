@@ -20,12 +20,27 @@ var albumMarconi = {
     year: '1909',
     albumArtUrl: 'assets/images/album_covers/20.png',
     songs: [
-      { title: 'Hello, Operator?', duration: '1:01' },
-      { title: 'Ring, ring, ring', duration: '5:01' },
-      { title: 'Fits in your pocket', duration: '3:21' },
-      { title: 'Can you hear me now?', duration: '3:14' },
-      { title: 'Wrong phone number', duration: '2:15' }
+        { title: 'Hello, Operator?', duration: '1:01' },
+        { title: 'Ring, ring, ring', duration: '5:01' },
+        { title: 'Fits in your pocket', duration: '3:21' },
+        { title: 'Can you hear me now?', duration: '3:14' },
+        { title: 'Wrong phone number', duration: '2:15' }
   ]
+};
+
+var albumApple= {
+    title: 'Apple Computers',
+    artist: 'Steve',
+    label: 'Inc.',
+    year: '1976',
+    albumArtUrl: 'assets/images/album_covers/22.jpg',
+    songs: [
+        { title: 'Is this your iPhone?', duration: '1:07' },
+        { title: 'May be your Macbook?', duration: '2:14' },
+        { title: 'Do you like the iMac?', duration: '3:21' },
+        { title: 'Also the Apple Watch', duration: '4:28' },
+        { title: 'Not to forget the iPad!', duration: '5:35' }
+    ]
 };
 
 var createSongRow = function (songNumber, songName, songLength) {
@@ -40,13 +55,13 @@ var createSongRow = function (songNumber, songName, songLength) {
     return template;
 };
 
-var setCurrentAlbum = function (album) {
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
+var setCurrentAlbum = function (album) {
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -61,4 +76,16 @@ var setCurrentAlbum = function (album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
-};
+
+    var toggleAlbum = function () {
+        if (albumTitle.firstChild.nodeValue == "The Colors") {
+          setCurrentAlbum(albumMarconi);
+        } else if (albumTitle.firstChild.nodeValue == "The Telephone") {
+           setCurrentAlbum(albumApple);
+        } else if (albumTitle.innerText == "Apple Computers") {
+          setCurrentAlbum(albumPicasso);
+        }
+    };
+
+    albumImage.addEventListener('click', toggleAlbum);
+  };
